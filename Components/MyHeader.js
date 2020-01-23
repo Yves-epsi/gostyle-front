@@ -1,13 +1,24 @@
 import React from 'react'
-import { Header } from 'react-native-elements';
+import { Header, Button, Icon } from 'react-native-elements';
 
 export default class MyHeader extends React.Component {
+  gotToProfile = () => {
+    this.props.navigation.navigate('Profile');
+  };
+
   render() {
     return (
         <Header
-            leftComponent={{ icon: 'menu', color: '#fff' }}
+            leftComponent={<Button
+              onPress={() => this.gotToProfile()}
+              icon={
+                  <Icon
+                  name="person"
+                  color="white"
+                  />
+              }/>}
             centerComponent={{ text: 'GoStyle', style: { color: '#fff' } }}
-            rightComponent={{ icon: 'home', color: '#fff' }}
+            rightComponent={{ icon: 'filter-list', color: '#fff' }}
         />
     )
   }

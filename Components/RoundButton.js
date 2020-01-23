@@ -2,12 +2,16 @@ import React from 'react'
 import { ThemeProvider, Button, Icon } from 'react-native-elements';
 
 export default class RoundButton extends React.Component {
-      
+    
+    gotToCamera = () => {
+        this.props.navigation.navigate('Camera');
+      };
+
   render() {
     return (
     <ThemeProvider theme={theme}>
         <Button
-            onPress={ () => {}}
+            onPress={() => this.gotToCamera()}
             icon={
                 <Icon
                 name="camera-alt"

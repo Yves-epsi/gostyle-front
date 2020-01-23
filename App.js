@@ -1,11 +1,11 @@
 import React from 'react';
-import MainView from './Components/MainView'
+import Navigation from './Navigation/Navigation'
 import Camera from './Components/Camera'
 
 export default class App extends React.Component {
   render() {
     return (
-      <MainView/>
+      <Navigation/>
     );
   }
 }
