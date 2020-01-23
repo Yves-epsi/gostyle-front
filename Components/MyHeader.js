@@ -17,7 +17,7 @@ export default class MyHeader extends React.Component {
                   color="white"
                   />
               }/>}
-            centerComponent={{ text: 'GoStyle', style: { color: '#fff' } }}
+            centerComponent={{ text: 'GoStyle', style: { color: '#fff', fontSize: 20 } }}
             rightComponent={{ icon: 'filter-list', color: '#fff' }}
         />
     )

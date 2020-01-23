@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, FlatList, Text } from 'react-native'
+import { StyleSheet, View, Image, Text } from 'react-native'
 import { ThemeProvider, Button, Icon } from 'react-native-elements';
 
 import MyHeader from "./MyHeader"
@@ -10,16 +10,7 @@ export default class ProfilView extends React.Component {
 
   render() {
     return (
-    <View style={{flex:1}}>
-        <Text>ProfilView</Text>
-    </View>
-    )
+        <Image style={{flex: 1, width: 420}} source={require('../assets/bob.jpg')}/>
+    );
   }
 }
-
-  const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'flex-end',
-    },
-});
