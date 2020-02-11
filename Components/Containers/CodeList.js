@@ -7,15 +7,17 @@ import { ThemeProvider, Button, Icon } from 'react-native-elements';
 export default class CodeList extends React.Component {
   render() {
     const code = this.props.code
+    const date = new Date();
+    const endDate = new Date(code.endDate)
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, endDate < date ? styles.invalid : null]}>
             <View style={styles.title_container}>
                 <Text style={styles.title_text}>{code.title}</Text>
             </View>
         <View style={styles.main_container}>
             <View style={styles.dates}>
-              <Text>Start : 20/02/40</Text>
-              <Text>End : 20/02/40</Text>
+              <Text>Start : {code.startDate}</Text>
+              <Text>End : {code.endDate}</Text>
             </View>
           <View style={styles.content_container}>
                 <Text style={styles.description_text} numberOfLines={2}>{code.title}</Text>
@@ -29,7 +31,10 @@ export default class CodeList extends React.Component {
   const styles = StyleSheet.create({
     container: {
         height: 100,
-        paddingBottom: 20,
+        paddingBottom: 10,
+      },
+    invalid: {
+        backgroundColor: 'lightgrey',
       },
     title_container: {
         flex: 1

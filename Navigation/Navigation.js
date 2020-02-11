@@ -1,8 +1,8 @@
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation';
 import MainView from '../Components/MainView'
-import ProfilView from '../Components/ProfilView'
 import Camera from '../Components/Camera'
+import PromotionsView from '../Components/PromotionsView'
 
 const blue = "#2289dc"
 
@@ -14,17 +14,16 @@ const MainStackNavigator = createStackNavigator({
       headerShown: false,
     }
   },
-  Profile: { 
-    screen: ProfilView,
+  Promotions: { 
+    screen: PromotionsView,
     navigationOptions: {
-      title: 'Profile',
+      title: 'Promotions',
       headerStyle: {
         backgroundColor: blue,
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
       },
-      
     }
   },
   Camera: { 
