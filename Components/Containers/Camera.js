@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-export default function App() {
+export default function Camera({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -13,9 +13,34 @@ export default function App() {
     })();
   }, []);
 
+
+  fetchData = async (id) => {
+    const url = "http://192.168.43.23:3000/qrcode/" + id;
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+          "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTgxNDkzMTg5fQ.kOG_g4F5B2xw25SZ4f6heM_2tCZ5ovk8al527-sdSdI",
+          "Content-Type": "application/json"
+      }})
+    if(res.status == 200) {
+      return res.json()
+    } else {
+      throw "The code isn't registered";
+    }
+  }
+
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    fetchData(data).
+    then((res) => {
+      const action = { type: "ADD_CODE", value: res[0] }
+      navigation.setParams({action: action})
+      navigation.navigate("Home", {
+        action: action
+      })
+    }).catch(() => {
+      alert("The code isn't registered");
+    })
   };
 
   if (hasPermission === null) {

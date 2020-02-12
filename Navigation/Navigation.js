@@ -1,8 +1,8 @@
 import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation';
-import MainView from '../Components/MainView'
-import Camera from '../Components/Camera'
-import PromotionsView from '../Components/PromotionsView'
+import MainView from '../Components/Presentational/MainView'
+import Camera from '../Components/Presentational/CameraView'
+import PromotionsView from '../Components/Presentational/PromotionsView'
 
 const blue = "#2289dc"
 

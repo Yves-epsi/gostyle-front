@@ -1,26 +1,33 @@
 import React from 'react'
 import { StyleSheet, View, FlatList, Text } from 'react-native'
 import { ThemeProvider, Button, Icon, Header } from 'react-native-elements';
+import { connect } from 'react-redux'
 
-import CodeList from "./CodeList"
-import RoundButton from "./RoundButton"
+import CodeList from "../Containers/CodeList"
+import RoundButton from "../Containers/RoundButton"
 
-import codes from "./data"
+import codes from "../data"
 
-export default class MainView extends React.Component {
+class MainView extends React.Component {
+
 
     constructor(props) {
         super(props)
-        this.state = {
- 
-        }
     }
+
+componentDidUpdate() {
+    console.log(this.props)
+    if(this.props.navigation.state.params.action){
+        this.props.dispatch(this.props.navigation.state.params.action)
+    }
+}
 
     gotToPromotions = () => {
         this.props.navigation.navigate('Promotions');
     };
       
   render() {
+    const { params } = this.props.navigation.state
     return (
     <View style={{flex:1}}>
         <Header
@@ -35,7 +42,7 @@ export default class MainView extends React.Component {
               }/>}
         />
             <FlatList
-            data={codes}
+            data={this.props.scannedCodes}
             renderItem={({item}) => <CodeList code={item}/>}
             />
         <RoundButton navigation={this.props.navigation}/>
@@ -50,3 +57,9 @@ export default class MainView extends React.Component {
         justifyContent: 'flex-end',
     },
 });
+
+const mapStateToProps = (state) => {
+    return state
+  }
+
+  export default connect(mapStateToProps)(MainView)

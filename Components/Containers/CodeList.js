@@ -8,19 +8,19 @@ export default class CodeList extends React.Component {
   render() {
     const code = this.props.code
     const date = new Date();
-    const endDate = new Date(code.endDate)
+    const endDate = new Date(code.date_end)
     return (
         <View style={[styles.container, endDate < date ? styles.invalid : null]}>
             <View style={styles.title_container}>
-                <Text style={styles.title_text}>{code.title}</Text>
+                <Text style={styles.title_text}>{code.name}</Text>
             </View>
         <View style={styles.main_container}>
             <View style={styles.dates}>
-              <Text>Start : {code.startDate}</Text>
-              <Text>End : {code.endDate}</Text>
+              <Text>Start : {new Date(code.date_start).getDate()}/{new Date(code.date_start).getMonth() + 1}/{new Date(code.date_start).getFullYear()}</Text>
+              <Text>End : {new Date(code.date_end).getDate()}/{new Date(code.date_end).getMonth() + 1}/{new Date(code.date_end).getFullYear()}</Text>
             </View>
           <View style={styles.content_container}>
-                <Text style={styles.description_text} numberOfLines={2}>{code.title}</Text>
+                <Text style={styles.description_text} numberOfLines={2}>{code.description}</Text>
           </View>
         </View>
         </View>
