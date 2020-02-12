@@ -1,14 +1,15 @@
-const initialState = { scanedCodes: [] }
+const initialState = { scannedCodes: [] }
 
 export default scanedCodesList = (state = initialState, action) => {
   let nextState
+  console.log(action)
   switch (action.type) {
     case 'ADD_CODE':
-      const scanedCodesIndex = state.scanedCodes.findIndex(item => item.id === action.value.id)
-      if (scanedCodesIndex == -1) {
+      const scannedCodesIndex = state.scannedCodes.findIndex(item => item.id === action.value.id)
+      if (scannedCodesIndex == -1) {
         nextState = {
           ...state,
-          scanedCodes: [...state.scanedCodes, action.value]
+          scannedCodes: [...state.scannedCodes, action.value]
         }
       }
       return nextState || state
