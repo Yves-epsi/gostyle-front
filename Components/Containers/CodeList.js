@@ -10,7 +10,7 @@ export default class CodeList extends React.Component {
     const date = new Date();
     const endDate = new Date(code.date_end)
     return (
-        <View style={[styles.container, endDate < date ? styles.invalid : null]}>
+        <View style={[styles.container, endDate < date ? styles.invalid : null, code.archived == true ? styles.invalid : null]}>
             <View style={styles.title_container}>
                 <Text style={styles.title_text}>{code.name}</Text>
             </View>

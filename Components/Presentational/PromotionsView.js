@@ -20,12 +20,12 @@ export default class PromotionsView extends React.Component {
     const res = await fetch("http://192.168.43.252:3000/qrcode", {
       method: "GET",
       headers: {
-          "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTgxNDM4MzAyfQ.nxNKZPF5mldyGT94f_vYBVQ3JlDwrohKFhpOcXZjZvg",
+          "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTgxNTgyMjE2fQ.4HI5V13UwnijIdJG8qzS8PkcOP5B1WcwptXHbVAf7BI",
           "Content-Type": "application/json"
       }})
     const json = await res.json()
     const promotionsValides = json.filter(element => {
-      return new Date(element.date_end) > new Date()
+      return new Date(element.date_end) > new Date() && element.archived == false
     });
     this.setState({promotions: promotionsValides})
   }

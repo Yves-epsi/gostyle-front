@@ -15,11 +15,11 @@ export default function Camera({ navigation }) {
 
 
   fetchData = async (id) => {
-    const url = "http://192.168.43.23:3000/qrcode/" + id;
+    const url = "http://192.168.43.252:3000/qrcode/" + id;
     const res = await fetch(url, {
       method: "GET",
       headers: {
-          "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTgxNDkzMTg5fQ.kOG_g4F5B2xw25SZ4f6heM_2tCZ5ovk8al527-sdSdI",
+          "access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTgxNTgyMjE2fQ.4HI5V13UwnijIdJG8qzS8PkcOP5B1WcwptXHbVAf7BI",
           "Content-Type": "application/json"
       }})
     if(res.status == 200) {
