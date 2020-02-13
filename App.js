@@ -1,11 +1,14 @@
 import React from 'react';
-import MainView from './Components/MainView'
-import Camera from './Components/Camera'
+import Navigation from './Navigation/Navigation'
+import Store from './Store/ConfigureStore'
+import { Provider } from 'react-redux'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Camera/>
+      <Provider store={Store}>
+        <Navigation/>
+      </Provider>
     );
   }
 }
